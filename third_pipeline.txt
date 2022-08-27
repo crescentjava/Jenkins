@@ -1,0 +1,57 @@
+Reading environment variables:
+
+Jenkins env variable locations
+you can display :
+http://localhost:9999/env-vars.html/
+
+e.g.
+search
+   build_number
+   job_name
+   build_display_name
+   jenkins_home
+   jenkins_url
+
+Note : for $ use double quotes ""
+pipeline{
+    agent any
+    stages{
+       stage("Checkout"){
+           steps{
+              echo 'Checking out'
+              echo "Running ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
+           }
+       }
+       stage("Build"){
+           steps{
+              echo 'Build'
+           }
+       }
+       stage("Test"){
+           steps{
+              echo 'Testing'
+              echo "${skiptests}"
+           }
+       }
+       stage("Deploy"){
+           steps{
+              echo 'Deploying'
+           }
+       }
+     }
+}
+
+output:
+  Running 2 on http://localhost:8888/
+
+
+
+
+
+
+
+
+
+
+
+

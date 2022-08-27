@@ -1,0 +1,43 @@
+create a new job : fourthpipeline
+select:pipeline
+  General
+     select: This project is parameterized
+               click on Add Parameter
+                  select boolean parameter
+                     Name : skiptests
+                     selected default value(True)
+
+pipeline{
+    agent any
+    stages{
+       stage("Checkout"){
+           steps{
+              echo 'Checking out'
+              echo "Running ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
+           }
+       }
+       stage("Build"){
+           steps{
+              echo 'Build'
+           }
+       }
+       stage("Test"){
+           steps{
+              echo 'Testing'
+           }
+       }
+       stage("Deploy"){
+           steps{
+              echo 'Deploying'
+           }
+       }
+     }
+}
+
+before it runs, it will ask you:
+The build requires parametes:
+false
+build
+
+
+                     

@@ -1,0 +1,90 @@
+
+
+
+
+
+Jenkins Pipeline Project to deploy war into tomcat
+
+configure below tools in Jenkins:
+git maven
+
+create pipeline project
+clone project from github
+Run the pipeline Job
+
+Add new user int tomcat-user.xml with deployment access
+<user username="deployer" password="pass123" roles="manager-script"/>
+change port no:
+<Connector port="9090"
+start tomcat server: 
+tomcat\bin>startup.bat
+
+Add the "deploy to container plugin" jenkins tomcat plugin
+
+maven project:
+pom.xml
+clean package
+add post-build action - deploy war/ear to container
+
+WAR/EAR file - **/*.war
+Context path - projectname
+Containers - select tomcat container
+Credentials - click on add
+                     Jenkins
+                       username - deployer
+                       password - pass123
+                 click on add
+     select deployer credentials now.
+     Tomcat URL : http://localhost:9090/
+
+in tomcat
+
+
+
+
+
+
+
+
+Jenkins:
+create new pipeline - javawebpipeline
+  pipeline
+  go to Build triggers tab
+    Github hook trigger for GITScm polling
+  go to pipeline tab
+    Script:  
+            pipeline{
+                agent any
+                  stages{
+	          stage('Build'){
+                          steps{
+                                    sh "mvn clean package"
+                            }
+                         }
+                       stage('Deploy'){
+                          steps{
+                                    sh "mvn clean package"
+                            }
+                         }
+                  }
+             }
+
+      
+click on Pipeline syntax(
+sinippet generator will help you learn the Pipeline Script code which can be used to define  vrious steps)  automatically give you groovy code
+Sample step: select 
+                     deploy:Deploy war/ear to a container
+
+Pipeline tab
+    Pipeline script from SCM
+      SCM - Git
+      Repository URL - Git
+      Script Path - Jenkinsfile
+      Lightweight checkout - default selected
+
+
+
+service tomcat start
+EC2 instance dns:8080
+  manage app
+     user pwd admin admin

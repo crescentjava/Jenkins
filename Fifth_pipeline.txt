@@ -1,0 +1,35 @@
+pipeline{
+    agent any
+    stages{
+       stage("Checkout"){
+           steps{
+              echo 'Checking out'
+              echo "Running ${env.BUILD_NUMBER} on ${env.JENKINS_URL}"
+           }
+       }
+       stage("Build"){
+           steps{
+              echo 'Build'
+           }
+       }
+       stage("Test"){
+           steps{
+              echo 'Testing'
+           }
+       }
+       stage("Approve Deployment"){
+           steps{
+              input "Have all the tests passed?"
+           }
+       }
+       stage("Deploy"){
+           steps{
+              echo 'Deploying'
+           }
+       }
+     }
+}
+
+it will asks you
+Have all the test passed?
+Proceed or Abort

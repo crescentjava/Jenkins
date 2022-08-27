@@ -1,0 +1,46 @@
+pipeline{
+    agen any
+    stages{
+        stage("Hello"){
+             steps{
+                echo 'Jenkins is awesome'
+             }
+
+        }
+
+    }
+}
+
+Multistage pipeline:
+create a new job:multistagepipeline
+select:pipeline
+go to pipeline tab
+
+pipeline{
+    agent any
+    stages{
+       stage("Checkout"){
+           steps{
+              echo 'Checking out'
+           }
+       }
+       stage("Build"){
+           steps{
+              echo 'Build'
+           }
+       }
+       stage("Test"){
+           steps{
+              echo 'Testing'
+           }
+       }
+       stage("Deploy"){
+           steps{
+              echo 'Deploying'
+           }
+       }
+     }
+}
+
+see the output on main page as well as on console
+

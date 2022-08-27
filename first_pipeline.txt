@@ -1,0 +1,28 @@
+create a new job - firstpipeline
+
+select - pipeline option
+
+select pipeline tab
+
+select  helloworld
+
+pipeline {
+    agent any 
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello world!' 
+            }
+        }
+    }
+}
+
+see the output on main page and console.
+
+
+-agent instructs Jenkins to allocate an executor (on any available agent/node in the Jenkins environment) and workspace for the entire Pipeline.
+ any any => job can run on any agent
+
+agent any parameter:
+   any,none,label,node,docker,dockerfile,kubernetes
+-echo writes simple string in the console output.

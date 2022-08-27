@@ -1,0 +1,39 @@
+java -jar jenkins.war --enable-future-java --httpPort=9999
+
+credentials : C:\Users\sdegaonk\.jenkins\secrets\initialAdminPassword.txt
+
+install suggested plugins - select
+
+
+
+
+Jenkins : Build Server
+
+very lightweight
+web based
+java based
+Jenkins Plugins:
+------------------
+------------------
+Code and Commit : Github, SVN
+
+Build and Configuration : Maven, Gradle, Ant, Docker
+
+Testing: Junit, Sonar, Selenium, Cucumber
+
+Release: XL Release, uDeploy, UrbanCode
+
+Deploy: AWS, GCP, Web Logic, OpenStack
+
+
+linux instance with java and maven installation.
+
+sudo su or sudo -i
+
+
+Jenkins Dashboard:
+People : where you can manage different type of users
+Build History : entire job history
+Manage Jenkins : various configuration settings
+                         Global tool configuration
+                         Manage plugins
